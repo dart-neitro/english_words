@@ -120,6 +120,33 @@ def show_word(
                 english_word_iterator.current[1])
 
 
+def show_all_words(
+        english_word_iterator: object, results: dict={},
+        show_familiar_words: bool=False) -> None:
+    """
+    The process of show all the words
+
+    :param english_word_iterator: Iteraror object
+    :param results: statistic object
+    :param show_familiar_words: Show translation if the word is familiar
+
+    :return: None
+    """
+    while True:
+        try:
+            show_word(
+                english_word_iterator=english_word_iterator,
+                results=results,
+                show_familiar_words=show_familiar_words)
+
+        except StopIteration:
+            break
+        except Exception as e:
+            print('raise Exception')
+            print(e)
+    return
+
+
 def show_statistic(results: dict) -> None:
     """
     Show statistic work program

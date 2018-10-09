@@ -14,6 +14,7 @@ if __name__ == "__main__":
     """
     Testing Iterator
     """
+
     data = tools.get_data_from_file("./tmp/data.txt")
 
     test_data = data
@@ -49,19 +50,9 @@ if __name__ == "__main__":
         randomize_collection=randomize_collection,
         sort_collection_by_name=sort_collection_by_name)
 
-    while True:
-        try:
-            tools.show_word(
+    tools.show_all_words(
                 english_word_iterator=english_word_iterator,
                 results=results,
                 show_familiar_words=show_familiar_words)
 
-        except StopIteration:
-            break
-        except Exception as e:
-            print('raise Exception')
-            print(e)
-
     tools.show_statistic(results)
-
-    print('The end')
