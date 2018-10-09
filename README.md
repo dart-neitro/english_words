@@ -18,4 +18,4 @@ EXAMPLE EXIST FILE
 TODO:
 - add methods for case stop with "CTRL+D" or "CTRL+C" 
 - add new source data (for example, SQLite)
- 
+- Statistics for sorting by the number of errors
