@@ -17,10 +17,13 @@ if __name__ == "__main__":
     data = tools.get_data_from_file("./tmp/data.txt")
 
     test_data = data
+    results = dict(
+        total=len(test_data),
+        success_answer=0,
+        wrong_answer=0
+    )
 
-    total, success_answer, wrong_answer = len(test_data), 0, 0
-
-    if not total:
+    if not results.get('total'):
         print("No data to show")
         sys.exit(0)
 
@@ -46,33 +49,12 @@ if __name__ == "__main__":
         randomize_collection=randomize_collection,
         sort_collection_by_name=sort_collection_by_name)
 
-
     while True:
         try:
-            next(english_word_iterator)
-            response = input(
-                "\nWord: %s " %
-                english_word_iterator.current[0]
-            )
-            if not response:
-                continue
-
-            if response and 'stop' in response:
-                print('Stopping process')
-                break
-
-            if '-' in response:
-                wrong_answer += 1
-                print(
-                    "Translate: %s" %
-                    english_word_iterator.current[1])
-
-            elif '+' in response:
-                success_answer += 1
-                if show_familiar_words:
-                    print(
-                        "Translate: %s" %
-                        english_word_iterator.current[1])
+            tools.show_word(
+                english_word_iterator=english_word_iterator,
+                results=results,
+                show_familiar_words=show_familiar_words)
 
         except StopIteration:
             break
@@ -80,18 +62,5 @@ if __name__ == "__main__":
             print('raise Exception')
             print(e)
 
-    if not total:
-        print("No data to show")
-        sys.exit(0)
-
-    total_answer = success_answer + wrong_answer
-    print("Process: %.2f%%" % (float(100 * total_answer) / total))
-    print("Total words: %s" % total)
-    print("Use words: %s" % total_answer)
-
-    print("Success rate: %.2f%%" % (
-            100 * float(success_answer) / total_answer))
-    print("Success answers: %s" % success_answer)
-    print("Wrong answers: %s" % wrong_answer)
 
     print('The end')

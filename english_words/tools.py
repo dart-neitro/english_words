@@ -77,3 +77,44 @@ def get_boolean_user_option(default: bool=False, text_question: str='') -> bool:
     elif '+' in response:
         return True
     return False
+
+
+def show_word(
+        english_word_iterator: object, results: dict={},
+        show_familiar_words: bool=False) -> None:
+    """
+    Show 1 word
+
+    :param english_word_iterator: Iteraror object
+    :param results: statistic object
+    :param show_familiar_words: Show translation if the word is familiar
+
+    :return: None
+    """
+
+    next(english_word_iterator)
+    response = input(
+        "\nWord: %s " %
+        english_word_iterator.current[0]
+    )
+    if not response:
+        return
+
+    if response and 'stop' in response:
+        print('Stopping process')
+        raise StopIteration('Stopping process')
+
+    if '-' in response:
+        results['wrong_answer'] += 1
+        print(
+            "Translate: %s" %
+            english_word_iterator.current[1])
+
+    elif '+' in response:
+        results['success_answer'] += 1
+        if show_familiar_words:
+            print(
+                "Translate: %s" %
+                english_word_iterator.current[1])
+
+
