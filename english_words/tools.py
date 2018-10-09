@@ -122,6 +122,15 @@ def show_word(
                 "Translate: %s" %
                 english_word_iterator.current[1])
 
+            is_success_answer = get_boolean_user_option(
+                default=True,
+                text_question="Is your answer correct"
+            )
+            if not is_success_answer:
+                results['wrong_success_answer'] += 1
+                results['wrong_answer'] += 1
+                results['success_answer'] += -1
+
 
 def show_all_words(
         english_word_iterator: object, results: dict={},
@@ -176,5 +185,6 @@ def show_statistic(results: dict) -> None:
             100 * float(results['success_answer']) / results['total_answer']))
     print("Success answers: %s" % results['success_answer'])
     print("Wrong answers: %s" % results['wrong_answer'])
+    print("Wrong success answers: %s" % results['wrong_success_answer'])
 
     print('\n' * 2, '*' * 10, ' END: ', '*' * 10, '\n' * 2)

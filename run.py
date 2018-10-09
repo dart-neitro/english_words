@@ -21,7 +21,8 @@ if __name__ == "__main__":
     results = dict(
         total=len(test_data),
         success_answer=0,
-        wrong_answer=0
+        wrong_answer=0,
+        wrong_success_answer=0
     )
 
     if not results.get('total'):
@@ -39,6 +40,8 @@ if __name__ == "__main__":
             default=False,
             text_question="Sort by name"
         )
+    else:
+        sort_collection_by_name = False
 
     show_familiar_words = tools.get_boolean_user_option(
         default=True,
