@@ -4,9 +4,13 @@ tmp/data.txt
 EXAMPLE EXIST FILE
 """
 
-aim - цель
+
+    aim - цель
+
     approximately  - примерно
+    
     attempt -    попытка / пробовать
+    
     accessible  -  доступные
 
 """
