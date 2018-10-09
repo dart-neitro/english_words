@@ -17,7 +17,7 @@ if __name__ == "__main__":
     data = tools.get_data_from_file("./tmp/data.txt")
     print(data)
 
-    test_data = []
+    test_data = data
 
     randomize_collection = False
     sort_collection_by_name = False
@@ -25,15 +25,7 @@ if __name__ == "__main__":
 
     if test_data:
 
-        print("""
-        Rules:
-        * If you know translate this word or fraze enter "+";
-        * If you NOT know translate this word or fraze enter "-";
-        * If you want stop process enter "stop";
-        * For finish process show message "The end";
-
-        Thank you for attention and Good Luck! Let's do it!
-        """)
+        tools.show_start_message()
 
         response = input("Randomize it? ")
         if '+' in response:

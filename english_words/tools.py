@@ -40,3 +40,22 @@ def trasform_data_from_file(junk_data: str) -> list:
     return data
 
 
+def show_start_message():
+    """
+    Show start message with rules and description.
+
+    :return: None
+    """
+    print(
+        """
+        Rules:
+        * If you know translate this word or fraze enter "+";
+        * If you NOT know translate this word or fraze enter "-";
+        * If you want stop process enter "stop";
+        * For finish process show message "The end";
+
+        Thank you for attention and Good Luck! Let's do it!
+        """
+    )
+    return
+
