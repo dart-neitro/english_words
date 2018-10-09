@@ -62,5 +62,6 @@ if __name__ == "__main__":
             print('raise Exception')
             print(e)
 
+    tools.show_statistic(results)
 
     print('The end')

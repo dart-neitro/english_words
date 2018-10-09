@@ -4,6 +4,8 @@ Functions for fork with this project
 
 """
 
+import sys
+
 
 def get_data_from_file(filename: str) -> list:
     """
@@ -118,3 +120,31 @@ def show_word(
                 english_word_iterator.current[1])
 
 
+def show_statistic(results: dict) -> None:
+    """
+    Show statistic work program
+
+    :param results: dictonary of statistic
+
+    :return:
+    """
+
+    print('\n' * 2, '*' * 10, ' RESULTS: ', '*' * 10, '\n' * 2)
+
+    if not results['total']:
+        print("No data to show")
+        sys.exit(0)
+
+    results['total_answer'] = results['success_answer'] + results[
+        'wrong_answer']
+    print("Process: %.2f%%" % (
+                float(100 * results['total_answer']) / results['total']))
+    print("Total words: %s" % results['total'])
+    print("Use words: %s" % results['total_answer'])
+
+    print("Success rate: %.2f%%" % (
+            100 * float(results['success_answer']) / results['total_answer']))
+    print("Success answers: %s" % results['success_answer'])
+    print("Wrong answers: %s" % results['wrong_answer'])
+
+    print('\n' * 2, '*' * 10, ' END: ', '*' * 10, '\n' * 2)
