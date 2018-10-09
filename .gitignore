@@ -1,0 +1,13 @@
+# venv
+venv/
+
+
+# tmp folders
+/tmp
+
+# tmp files
+*.pyc
+
+# PyCharm
+.idea/*
+.idea
