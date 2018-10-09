@@ -73,7 +73,9 @@ def get_boolean_user_option(default: bool=False, text_question: str='') -> bool:
 
     :return:
     """
-    response = input("%s?" % text_question)
+    response = input("%s? (default: %s) " % (
+        text_question, '+' if default else '-'))
+
     if set('+-') - set(response) == set('+-'):
         return default
     elif '+' in response:
@@ -100,7 +102,8 @@ def show_word(
         english_word_iterator.current[0]
     )
     if not response:
-        return
+        print('skip (auto-FAIL)')
+        response = '-'
 
     if response and 'stop' in response:
         print('Stopping process')

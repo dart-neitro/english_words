@@ -41,7 +41,7 @@ if __name__ == "__main__":
         )
 
     show_familiar_words = tools.get_boolean_user_option(
-        default=False,
+        default=True,
         text_question="Do you want to show familiar words"
     )
 
