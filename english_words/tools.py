@@ -56,6 +56,7 @@ def show_start_message() -> None:
         * If you want stop process enter "stop";
         * If you push enter (Clear message) use default value
         * For finish process show message "The end";
+        * To force the program to stop, use "CTRL + D" 
 
         Thank you for attention and Good Luck! Let's do it!
         
@@ -112,14 +113,14 @@ def show_word(
     if '-' in response:
         results['wrong_answer'] += 1
         print(
-            "Translate: %s" %
+            "Translate (fail): %s" %
             english_word_iterator.current[1])
 
     elif '+' in response:
         results['success_answer'] += 1
         if show_familiar_words:
             print(
-                "Translate: %s" %
+                "Translate (success): %s" %
                 english_word_iterator.current[1])
 
             is_success_answer = get_boolean_user_option(
