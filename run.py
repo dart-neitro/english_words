@@ -15,37 +15,37 @@ if __name__ == "__main__":
     Testing Iterator
     """
     data = tools.get_data_from_file("./tmp/data.txt")
-    print(data)
 
     test_data = data
 
-    randomize_collection = False
-    sort_collection_by_name = False
-    show_familiar_words = False
+    total, success_answer, wrong_answer = len(test_data), 0, 0
 
-    if test_data:
+    if not total:
+        print("No data to show")
+        sys.exit(0)
 
-        tools.show_start_message()
+    tools.show_start_message()
 
-        response = input("Randomize it? ")
-        if '+' in response:
-            randomize_collection = True
+    randomize_collection = tools.get_boolean_user_option(
+        default=False,
+        text_question="Randomize it"
+    )
+    if not randomize_collection:
+        sort_collection_by_name = tools.get_boolean_user_option(
+            default=False,
+            text_question="Sort by name"
+        )
 
-        if not randomize_collection:
-            response = input("Sort by name? ")
-            if '+' in response:
-                sort_collection_by_name = True
-
-        response = input("Do you want to show familiar words? ")
-        if '+' in response:
-            show_familiar_words = True
+    show_familiar_words = tools.get_boolean_user_option(
+        default=False,
+        text_question="Do you want to show familiar words"
+    )
 
     english_word_iterator = EnglishWordsIterator(
         word_collections=test_data,
         randomize_collection=randomize_collection,
         sort_collection_by_name=sort_collection_by_name)
 
-    total, success_answer, wrong_answer = len(test_data), 0, 0
 
     while True:
         try:
