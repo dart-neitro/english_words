@@ -102,15 +102,16 @@ def show_word(
         "\nWord: %s " %
         english_word_iterator.current[0]
     )
+    
     if not response:
         print('skip (auto-FAIL)')
         response = '-'
 
-    if response and 'stop' in response:
+    elif 'stop' in response:
         print('Stopping process')
         raise StopIteration('Stopping process')
 
-    if '-' in response:
+    elif '-' in response:
         results['wrong_answer'] += 1
         print(
             "Translate (fail): %s" %
@@ -131,6 +132,9 @@ def show_word(
                 results['wrong_success_answer'] += 1
                 results['wrong_answer'] += 1
                 results['success_answer'] += -1
+    else:
+        print('skip (auto-FAIL)')
+        response = '-'
 
 
 def show_all_words(
